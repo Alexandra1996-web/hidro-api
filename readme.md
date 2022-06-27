@@ -5,7 +5,9 @@
 - Django 4
 - SQLite3
 
-## Intrucciones para sistemas basados en UNIX(Linux/Mac):
+> Descargue o clone este proyecto y luego siga las siguientes instrucciones:
+
+## Intrucciones para la instalación sistemas basados en UNIX(Linux/Mac):
 
 ### Para correr la aplicación primero debemos crear nuestro entorno virtual:
 ```
@@ -35,8 +37,7 @@ python3 manage.py runserver
 ```
 
 
-
-## Intrucciones para Windows:
+## Intrucciones para la instalación en Windows:
 ### Para correr la aplicación primero debemos crear nuestro entorno virtual:
 ```
 py -m venv venv
