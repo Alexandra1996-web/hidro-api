@@ -1,48 +1,52 @@
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
+from api.models import Hidrometrica
+from api.serializers import HidrometricaSerializer
 
-from api.models import Auto
-from api.serializers import AutoSerializer
-
-
+  
 @csrf_exempt
-def lista_de_autos(request):
-    """Listado, creación de nuevos autos"""
+def lista_de_hidrometricas(request):
+    """
+    List all code datos, or create a new dato.
+    """
     if request.method == 'GET':
-        autos = Auto.objects.all()
-        serializer = AutoSerializer(autos, many=True)
+        hidrometricas = Hidrometrica.objects.all()
+        serializer = HidrometricaSerializer(hidrometricas, many=True)
         return JsonResponse(serializer.data, safe=False)
-      
+
     elif request.method == 'POST':
-        data_parseado = JSONParser().parse(request)
-        serializer = AutoSerializer(data=data_parseado)
+        data = JSONParser().parse(request)
+        serializer = HidrometricaSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
-
+  
 
 @csrf_exempt
-def detalles_del_auto(request, pk):
+def detalles_de_hidrometricas(request, id):
+    """
+    Retrieve, update or delete a code hidrometrica.
+    """
     try:
-        auto = Auto.objects.get(id=pk)
-    except Auto.DoesNotExist:
-        return JsonResponse(status=404)
-    
+        hidrometrica = Hidrometrica.objects.get(id=id)
+    except hidrometrica.DoesNotExist:
+        return HttpResponse(status=404)
+
     if request.method == 'GET':
-        serializer = AutoSerializer(auto)
+        serializer = HidrometricaSerializer(hidrometrica)
         return JsonResponse(serializer.data)
-    
+
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
-        serializer = AutoSerializer(auto, data=data)
+        serializer = HidrometricaSerializer(hidrometrica, data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors, status=400)
-    
+
     elif request.method == 'DELETE':
-        auto.delete()
-        return JsonResponse({"id": auto.id}, status=204) # NO CONTENT
-    
+        hidrometrica.delete()
+        return JsonResponse({'id': hidrometrica.id}, status=204)
+

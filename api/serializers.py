@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from api.models import Auto
+from api.models import Hidrometrica
 
 
-class AutoSerializer(serializers.ModelSerializer):
+class HidrometricaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Auto
-        fields = ['id', 'marca', 'modelo', 'chapa']
+        model = Hidrometrica
+        fields = ['id', 'fecha', 'nivel']

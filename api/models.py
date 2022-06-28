@@ -1,18 +1,14 @@
 from django.db import models
 
 
-class Auto(models.Model):
-    """Model de base de datos de un Auto."""
-    marca = models.CharField(max_length=50)
-    modelo = models.CharField(max_length=50)
-    chapa = models.CharField(max_length=9)
-    creado = models.DateTimeField(auto_now_add=True)
+class Hidrometrica(models.Model):
+    fecha = models.CharField(max_length=50)
+    nivel = models.CharField(max_length=50)
     
     class Meta:
-        ordering = ['creado']
-        
-    def __str__(self):
-        return f'Marca: {self.marca}, ID: {self.id}'
-        
-
+        db_table = 'Hidrometrica'
+        ordering = ['-fecha']
     
+    def __str__(self):
+        return f'Fecha: {self.fecha} - Nivel: {self.nivel}'
+      

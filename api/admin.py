@@ -1,4 +1,4 @@
 from django.contrib import admin
-from api.models import Auto
+from api.models import Hidrometrica
 
-admin.site.register(Auto)
+admin.site.register(Hidrometrica)
