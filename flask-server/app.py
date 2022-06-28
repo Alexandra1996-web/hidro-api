@@ -1,11 +1,17 @@
+#Importamos:
+#   - Requests: La libreria requests es la libreria por defecto para hacer peticiones HTTP en Python. Leer: https://realpython.com/python-requests/
+#   - Flask:
 import requests
 from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+# La URI de la base de datos que deberia ser usada para la conexion.
+#   - Leer: https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../db.sqlite3'
 
-
+# Contexto de la aplicacion:
+#   - Leer: https://flask.palletsprojects.com/en/2.1.x/appcontext/
 with app.app_context():
     from models import FlaskHidrometricaModel, db
 
@@ -31,7 +37,7 @@ with app.app_context():
         
         
         return jsonify(respuesta_json)
-      
+    
     @app.route("/")
     def index():
         return "Funcionaaaa"

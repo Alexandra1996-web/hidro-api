@@ -8,7 +8,7 @@ class Hidrometrica(models.Model):
     class Meta:
         db_table = 'Hidrometrica'
         ordering = ['-fecha']
-    
+
     def __str__(self):
         return f'Fecha: {self.fecha} - Nivel: {self.nivel}'
-      
+    
