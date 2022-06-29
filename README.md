@@ -38,13 +38,26 @@ Tecnologías utilizadas para el proyecto
 -	Django REST
 -	Tailwind
 
-Autores 
--Fabiola Belén Balbuena Morínigo.
+Autores:
+
+
+-Fabiola Belén Balbuena Morínigo
+
+
 -Nestor Manueal Castelnovo Acuña
+
+
 -Víctor Hugo Antonio Vidovich Sarubbi
+
+
 -Diana Raquel Coronel Nakagawa 
+
+
 -Pilar Edith Castellano Lugo
+
+
 Coaches de Desarrollo: Alexandra Cáceres y Sergio García
+
 
 Licencia Open Source
 
